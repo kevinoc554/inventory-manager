@@ -1,6 +1,8 @@
+import imp
 from re import template
 from django.shortcuts import render
 from .models import Inventory
+from .forms import InventoryForm
 
 
 def home(request):
@@ -9,9 +11,11 @@ def home(request):
     along with the forms to create new entries
     """
     inventory = Inventory.objects.all()
+    inventory_form = InventoryForm()
     template = 'home/index.html'
     context = {
         'inventory': inventory,
+        'inventory_form': inventory_form,
     }
 
     return render(request, template, context)
