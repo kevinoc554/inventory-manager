@@ -38,13 +38,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Pens</td>
-                <td>1000</td>
-                <td>0.50</td>
-                <td>Edit | Delete</td>
-              </tr>
+              {% for item in inventory %}
+                <tr>
+                  <th scope="row">{{ item.id }}</th>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.unit_price }}</td>
+                  <td>Edit | Delete</td>
+                </tr>
+              {% endfor %}
             </tbody>
           </table>
         </div>
