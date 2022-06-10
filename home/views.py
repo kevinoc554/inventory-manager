@@ -1,6 +1,6 @@
 import imp
 from re import template
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Inventory
 from .forms import InventoryForm
 
@@ -20,3 +20,13 @@ def home(request):
 
     return render(request, template, context)
 
+def add_inventory(request):
+    """
+    A view to add items to the inventory
+    """
+    if request.method == 'POST':
+        form = InventoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+    
+    return redirect('home')

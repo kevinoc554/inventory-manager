@@ -53,10 +53,10 @@
         </div>
         <div class="col-4">
             <h5>Add Inventory Item</h5>
-            <form action="" method="post">
+            <form action="{% url 'add_inventory' %}" method="post">
               {% csrf_token %}
               {{ inventory_form|crispy }}
-              <button type="submit" class="btn btn-primary">Submit</button> -->
+              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
       </div>
