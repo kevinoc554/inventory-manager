@@ -17,7 +17,7 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <title>Inventory Manager</title>
+    <title>Inventory Manager | Delete</title>
   </head>
   <body>
     {% load crispy_forms_tags %}
@@ -27,7 +27,11 @@
       </div>
 
       <div class="row">
-        <div class="col-8">
+        <div class="col-12">
+          <h2>Delete</h2>
+        </div>
+        <div class="col-12">
+          <p>You have selected to delete the following inventory item:</p>
           <table class="table">
             <thead>
               <tr>
@@ -35,29 +39,22 @@
                 <th scope="col">Name</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Unit Price</th>
-                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {% for item in inventory %}
-                <tr>
-                  <th scope="row">{{ item.id }}</th>
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.quantity }}</td>
-                  <td>{{ item.unit_price }}</td>
-                  <td>Edit | <a href="{% url 'delete_inventory' item.id %}">Delete</a></td>
-                </tr>
-              {% endfor %}
+              <tr>
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.unit_price }}</td>
+              </tr>
             </tbody>
           </table>
-        </div>
-        <div class="col-4">
-            <h5>Add Inventory Item</h5>
-            <form action="{% url 'add_inventory' %}" method="post">
-              {% csrf_token %}
-              {{ inventory_form|crispy }}
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+          <p>Click the Delete button below to confirm, or Cancel to go back. Please note this action is final, and cannot be undone.</p>
+          <form action="{% url 'delete_inventory' item.id %}" method="post">
+              <button type="submit" class="btn btn-primary">DELETE</button>
+              <a href="{% url 'home' %}" class="btn btn-primary">CANCEL</a>
+          </form>
         </div>
       </div>
     </div>
