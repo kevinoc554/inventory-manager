@@ -11,10 +11,12 @@ def home(request):
     along with the forms to create new entries
     """
     inventory = Inventory.objects.filter(deleted=False)
+    del_items = Inventory.objects.filter(deleted=True)
     inventory_form = InventoryForm()
     template = 'home/index.html'
     context = {
         'inventory': inventory,
+        'del_items': del_items,
         'inventory_form': inventory_form,
     }
 
