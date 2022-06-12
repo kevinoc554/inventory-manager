@@ -48,10 +48,22 @@ def delete_inventory(request, inventory_id):
     return render(request, template, context)
 
 
-def edit_inventory(request):
+def edit_inventory(request, inventory_id):
     """
     A view to edit and update exisiting inventory items
     """
+    item = get_object_or_404(Inventory, pk=inventory_id)
+    if request.method == 'POST':
+        form = InventoryForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = InventoryForm(instance=item)
+    
     template = 'home/edit.html'
-    context = {}
+    context = {
+        'item': item,
+        'form': form,
+    }
     return render(request, template, context)
