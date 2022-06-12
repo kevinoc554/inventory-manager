@@ -65,6 +65,7 @@
           </form>
         </div>
       </div>
+      {% if del_items %}
       <div class="row">
         <div class="col-12">
           <h2>Deleted Items</h2>
@@ -89,13 +90,14 @@
                 <td>{{ item.quantity }}</td>
                 <td>{{ item.unit_price }}</td>
                 <td>{{ item.delete_comment }}</td>
-                <td><a href="">Restore</a></td>
+                <td><a href="{% url 'restore_inventory' item.id %}">Restore</a></td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
         </div>
       </div>
+      {% endif %}
     </div>
   </body>
 </html>

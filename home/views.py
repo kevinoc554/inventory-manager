@@ -71,3 +71,14 @@ def edit_inventory(request, inventory_id):
         'form': form,
     }
     return render(request, template, context)
+
+def restore_inventory(request, inventory_id):
+    """
+    A view to restore deleted inventory items
+    Returns item to current stock and removes delete comment
+    """
+    item = get_object_or_404(Inventory, pk=inventory_id)
+    item.deleted = False
+    item.delete_comment = ""
+    item.save()
+    return redirect('home')
