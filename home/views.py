@@ -39,6 +39,7 @@ def delete_inventory(request, inventory_id):
     item = get_object_or_404(Inventory, pk=inventory_id)
     if request.method == 'POST':
         item.deleted = True
+        item.delete_comment = request.POST['delete-comment']
         item.save()
         return redirect('home')
     template = 'home/delete.html'

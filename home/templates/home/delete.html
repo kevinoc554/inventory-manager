@@ -51,11 +51,11 @@
             </tbody>
           </table>
           <p>
-            Click the Delete button below to confirm, or Cancel to go back.
-            Please note this action is final, and cannot be undone.
+            Leave a deletion comment and click the Delete button below to confirm, or Cancel to go back.
           </p>
           <form action="{% url 'delete_inventory' item.id %}" method="post">
             {% csrf_token %}
+            <input type="text" name="delete-comment" id="delete-comment"><br>
             <button type="submit" class="btn btn-primary">DELETE</button>
             <a href="{% url 'home' %}" class="btn btn-primary">CANCEL</a>
           </form>
