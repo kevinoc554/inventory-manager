@@ -46,3 +46,12 @@ def delete_inventory(request, inventory_id):
     }
 
     return render(request, template, context)
+
+
+def edit_inventory(request):
+    """
+    A view to edit and update exisiting inventory items
+    """
+    template = 'home/edit.html'
+    context = {}
+    return render(request, template, context)
