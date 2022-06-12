@@ -50,10 +50,14 @@
               </tr>
             </tbody>
           </table>
-          <p>Click the Delete button below to confirm, or Cancel to go back. Please note this action is final, and cannot be undone.</p>
+          <p>
+            Click the Delete button below to confirm, or Cancel to go back.
+            Please note this action is final, and cannot be undone.
+          </p>
           <form action="{% url 'delete_inventory' item.id %}" method="post">
-              <button type="submit" class="btn btn-primary">DELETE</button>
-              <a href="{% url 'home' %}" class="btn btn-primary">CANCEL</a>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">DELETE</button>
+            <a href="{% url 'home' %}" class="btn btn-primary">CANCEL</a>
           </form>
         </div>
       </div>

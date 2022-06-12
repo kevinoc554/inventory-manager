@@ -37,10 +37,12 @@ def delete_inventory(request, inventory_id):
     input as deletion cannot be undone. 
     """
     item = get_object_or_404(Inventory, pk=inventory_id)
-    if request.method == 'GET':
-        template = 'home/delete.html'
-        context = {
-            'item': item,
-        }
+    if request.method == 'POST':
+        item.delete()
+        return redirect('home')
+    template = 'home/delete.html'
+    context = {
+        'item': item,
+    }
 
-        return render(request, template, context)
+    return render(request, template, context)
