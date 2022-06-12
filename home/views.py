@@ -10,7 +10,7 @@ def home(request):
     A view to render the tables listing the inventory and shipments,
     along with the forms to create new entries
     """
-    inventory = Inventory.objects.all()
+    inventory = Inventory.objects.filter(deleted=False)
     inventory_form = InventoryForm()
     template = 'home/index.html'
     context = {
@@ -38,7 +38,8 @@ def delete_inventory(request, inventory_id):
     """
     item = get_object_or_404(Inventory, pk=inventory_id)
     if request.method == 'POST':
-        item.delete()
+        item.deleted = True
+        item.save()
         return redirect('home')
     template = 'home/delete.html'
     context = {
