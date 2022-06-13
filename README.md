@@ -28,3 +28,15 @@ The site offers the following functionality:
     - Users can restore deleted items. This will return them to the table of available items, and remove any deletion comments.
 
 ## Deployment
+### Local:
+To run the application locally:
+1. Clone the repository using ``git clone https://github.com/kevinoc554/inventory-manager.git``.
+2. Install the required packages using ``pip install -r requirements.txt``.
+3. Run the server using ``python manage.py runserver``.
+
+### Replit:
+To run the app on Replit:
+1. Navigate to the [Repl](https://replit.com/@kevinoc/inventory-manager).
+2. Fork the Repl, using the button the top right.
+3. Install the required packages using ``pip install -r requirements.txt``.
+4. Run the server using ``python manage.py runserver``.
